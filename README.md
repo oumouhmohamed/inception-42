@@ -55,4 +55,5 @@ If local DNS is not configured, add this line to /etc/hosts:
 - WordPress installation: https://wordpress.org/documentation/
 - MariaDB documentation: https://mariadb.com/kb/en/documentation/
 
-This project was built using AI assistance for structure planning, Docker configuration, and validation steps. The AI was used to draft the Compose file, service configuration, and documentation, and to verify runtime behavior with Docker commands.
+
+AI was used as a support tool to better understand the theoretical concepts behind Docker and the project architecture, and to help find and organize relevant resources for the documentation. The core implementation, design choices, and configuration details were completed manually.
