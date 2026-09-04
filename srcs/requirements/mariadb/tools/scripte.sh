@@ -1,11 +1,7 @@
 #!/bin/bash
 
-DB_INITIALIZED="/var/lib/mysql/mysql"
-
-echo "Checking if $DB_INITIALIZED exists..."
-
-if [ ! -d "$DB_INITIALIZED" ]; then
-    echo "Initializing database..."
+if [ ! -d "/var/lib/mysql/mysql" ]; then
+    echo "Initializing DATABASE..."
     mariadb-install-db --user=mysql --datadir=/var/lib/mysql
 
     echo "Running bootstrap SQL..."
@@ -17,9 +13,9 @@ CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';
 GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO '${MYSQL_USER}'@'%';
 FLUSH PRIVILEGES;
 EOF
-    echo "Bootstrap done, exit code: $?"
+    echo "Bootstrap done, $?"
 else
-    echo "Database already initialized, skipping..."
+    echo "Database already initialized"
 fi
 
 mkdir -p /run/mysqld
