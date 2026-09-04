@@ -12,4 +12,4 @@ RUN openssl req -x509 -nodes \
 
 COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
 
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]

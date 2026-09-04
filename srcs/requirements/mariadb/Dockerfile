@@ -8,4 +8,4 @@ RUN chmod +x /usr/local/bin/start-mariadb.sh
 
 RUN sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
 
-CMD ["/usr/local/bin/start-mariadb.sh"]
+ENTRYPOINT ["/usr/local/bin/start-mariadb.sh"]
