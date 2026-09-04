@@ -1,22 +1,23 @@
-all:
-	mkdir -p /home/mooumouh/data/wordpress
-	mkdir -p /home/mooumouh/data/mariadb
-	docker compose -f srcs/docker-compose.yml up -d --build
+COMPOSE = docker compose -f srcs/docker-compose.yml
+DATA = /home/mooumouh/data
+
+all: up
 
 up:
-	docker compose -f srcs/docker-compose.yml up -d
+	mkdir -p $(DATA)/wordpress
+	mkdir -p $(DATA)/mariadb
+	$(COMPOSE) up -d --build
 
 down:
-	docker compose -f srcs/docker-compose.yml down
+	$(COMPOSE) down
 
 clean:
-	docker compose -f srcs/docker-compose.yml down -v --rmi all
-	sudo rm -rf /home/mooumouh/data/wordpress/*
-	sudo rm -rf /home/mooumouh/data/mariadb/*
+	$(COMPOSE) down -v --rmi all
+	sudo rm -rf $(DATA)/wordpress/*
+	sudo rm -rf $(DATA)/mariadb/*
 
 fclean: clean
-	docker system prune -af
 
 re: fclean all
 
-.PHONY: re fclean clean down all
+.PHONY: all up down clean fclean re
